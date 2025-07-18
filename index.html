@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Consulta de Estado de Título</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f7f7f7;
+    }
+    h2 {
+      color: #003366;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    #resultado {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Consulta de estado de título</h2>
+  <p>Ingrese su número de cédula para verificar el estado de su título:</p>
+  <input type="text" id="cedula" placeholder="Ej: 21067822">
+  <button onclick="buscarEstado()">Consultar</button>
+  <div id="resultado"></div>
+
+  <script>
+    const data = {
+      "30018822": "Listo para retirar",
+      "19638513": "Listo para retirar",
+      "115874118": "Listo para retirar"
+    };
+
+    function buscarEstado() {
+      const cedula = document.getElementById("cedula").value.trim();
+      const resultado = document.getElementById("resultado");
+      if (data[cedula]) {
+        resultado.innerHTML = "✅ Estado: <strong>" + data[cedula] + "</strong>";
+      } else {
+        resultado.innerHTML = "❌ No se encontró información para esa cédula.";
+      }
+    }
+  </script>
+</body>
+</html>
